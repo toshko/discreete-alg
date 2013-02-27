@@ -13,7 +13,14 @@ int main()
 	cin >> m;
 	cin >> n;
 	read(SetA, SetB, m, n);
-	cout << SetA[2] << endl;
+	solve(SetA, SetB, result, m, n);
+	for (int i = 0; i < m+n; i++)
+	{
+		if ( result[i] == -1)
+			break;
+		else
+			cout << result[i] << endl;
+	}	
 	
 	
 
@@ -32,7 +39,7 @@ void read(int SetA[], int SetB[], int m, int n)
 	
 	for (i = 0; i < n; ++i)
 	{
-			cin >> SetA[i];
+			cin >> SetB[i];
 	}
 	
 }
@@ -63,5 +70,17 @@ void solve(int SetA[], int SetB[], int result[], int m, int n)
 			i++;
 		}
 	}
+	
+	if ( i < m )
+	{
+		for (; i < n ; )
+			result[counter++] = SetA[i++];
+	}
+	else
+	{
+		for (; j < n ; )
+			result[counter++] = SetB[j++];
+	}
+			result[counter] = -1;
 	
 }
