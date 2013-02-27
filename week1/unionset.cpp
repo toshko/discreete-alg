@@ -5,7 +5,7 @@ void read(int SetA[], int SetB[], int m, int n);
 void solve(int SetA[], int SetB[], int result[], int m, int n);
  
 #define MAXN 1000
-int m, n;
+int m, n, counter;
 int SetA[MAXN], SetB[MAXN], result[MAXN];
 
 int main()
@@ -14,11 +14,8 @@ int main()
 	cin >> n;
 	read(SetA, SetB, m, n);
 	solve(SetA, SetB, result, m, n);
-	for (int i = 0; i < m+n; i++)
+	for (int i = 0; i < counter; i++)
 	{
-		if ( result[i] == -1)
-			break;
-		else
 			cout << result[i] << endl;
 	}	
 	
@@ -49,7 +46,7 @@ void solve(int SetA[], int SetB[], int result[], int m, int n)
 	
 	int i;
 	int j;
-	int counter = 0;
+	counter = 0;
 	
 	for (i = 0, j = 0; i < m && j < n; )
 	{
