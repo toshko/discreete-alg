@@ -62,7 +62,6 @@ void solve(int SetA[], int SetB[], int result[], int m, int n)
 		}
 		else 
 		{
-			result[counter++] = SetB[j];
 			j++;
 			i++;
 		}
