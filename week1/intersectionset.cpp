@@ -52,12 +52,10 @@ void solve(int SetA[], int SetB[], int result[], int m, int n)
 	{
 		if ( SetA[i] < SetB[j] )
 		{
-			result[counter++] = SetA[i];
 			i++;
 		}
 		else if ( SetB[j] < SetA[i] )
 		{
-			result[counter++] = SetB[j];
 			j++;
 		}
 		else 
@@ -67,7 +65,7 @@ void solve(int SetA[], int SetB[], int result[], int m, int n)
 			i++;
 		}
 	}
-	
+/*	
 	if ( i < m )
 	{
 		for (; i < n ; )
@@ -79,5 +77,7 @@ void solve(int SetA[], int SetB[], int result[], int m, int n)
 			result[counter++] = SetB[j++];
 	}
 			result[counter] = -1;
+			
+*/
 	
 }
