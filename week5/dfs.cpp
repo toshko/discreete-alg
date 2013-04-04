@@ -8,8 +8,9 @@ bool not_empty();
 void make_empty();
 void push(int x);
 void pop();
-int look();
+int  look();
 void DFS(int r);
+void DFS_R(int r);
 
 int vertices, edges;
 int m[MAXN][MAXN] = {0};
@@ -22,7 +23,7 @@ int main()
 {
    cin >> vertices >> edges;
    convert();
-   DFS(1);
+   DFS_R(1);
 
    for (int z = 1; z <= vertices; ++z)
       cout << z << " " << P[z] << endl;
@@ -42,6 +43,23 @@ void convert()
    }
 
 }
+
+void DFS_R(int r)
+{
+   int y;
+   U[r] = 1;
+   while (m[r][0] > 0)
+   {
+      y = m[r][m[r][0]--];
+      if (!U[y])
+      {
+         U[y] = 1;
+         P[y] = r;
+         DFS_R(y);
+      }
+   }
+}        
+
 
 void DFS(int r)
 {
