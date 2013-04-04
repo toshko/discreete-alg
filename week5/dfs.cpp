@@ -11,11 +11,12 @@ void pop();
 int  look();
 void DFS(int r);
 void DFS_R(int r);
+void first_call();
 
 int vertices, edges;
 int m[MAXN][MAXN] = {0};
 int S[MAXN], top;
-int U[MAXN], P[MAXN];
+int U[MAXN], P[MAXN], T[MAXN], q;
 
 
 
@@ -23,8 +24,7 @@ int main()
 {
    cin >> vertices >> edges;
    convert();
-   DFS_R(1);
-
+   first_call();
    for (int z = 1; z <= vertices; ++z)
       cout << z << " " << P[z] << endl;
 }
@@ -44,6 +44,19 @@ void convert()
 
 }
 
+void first_call()
+{
+   int i;
+   q = 0;
+   for ( i = 1; i < vertices; ++i)
+   {
+      if (U[i] == 0) 
+      {
+         DFS_R(i);
+      }
+   }
+ }
+
 void DFS_R(int r)
 {
    int y;
@@ -57,7 +70,7 @@ void DFS_R(int r)
          P[y] = r;
          DFS_R(y);
       }
-   }
+   } T[q++] = r; // topological sort
 }        
 
 
