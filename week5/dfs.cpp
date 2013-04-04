@@ -27,6 +27,12 @@ int main()
    first_call();
    for (int z = 1; z <= vertices; ++z)
       cout << z << " " << P[z] << endl;
+      
+   cout << endl << endl << endl;
+   
+   for (int v = vertices - 1; v >= 0; --v)
+      cout << T[v] << " ";  
+      cout << endl; 
 }
 
 
@@ -38,7 +44,7 @@ void convert()
       cin >> a >> b;
 
       m[a][++m[a][0]] = b; 
-      m[b][++m[b][0]] = a; // if the graph is directed comment this line 
+      //m[b][++m[b][0]] = a; // if the graph is directed comment this line 
 
    }
 
