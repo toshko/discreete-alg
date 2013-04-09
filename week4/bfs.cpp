@@ -11,7 +11,7 @@ void forest();
 bool not_empty();
 int pop();
 
-
+int tree_height = 0;
 int Q[MAXN], b, e;
 int U[MAXN], P[MAXN];
 int vertices, edges;
@@ -23,9 +23,10 @@ int main()
    cin >> vertices >> edges;  
    convert();
    BFS(1);
-   forest();
+  // forest();
    for (int z = 1; z <= vertices; ++z)
       cout << z << " " << P[z] << endl;
+   cout << "ST height: " << tree_height << endl;
 }
 void forest()
 {
@@ -43,23 +44,31 @@ void forest()
 }
 void BFS(int r)
 {
-   int x,y,i;
+   int x,y,i,level;
    make_empty();
    push(r);
    U[r] = 1;
    P[r] = -1;
+   level = r;
    while (not_empty())
    {
       x = pop();
       for ( i = 1; i <= m[x][0]; ++i)
       {
 	 y = m[x][i];
+	 cout << "Y: " << y << endl;
 	 if (!U[y])
 	 {
 	    push(y);
 	    U[y] = 1;
 	    P[y] = x;
 	 }
+      }
+      if (level == x)
+      {
+	 level = Q[e];
+	 cout << level << endl;
+	 tree_height++;
       }
    }
 
