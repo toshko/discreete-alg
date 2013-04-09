@@ -9,27 +9,27 @@ int lists_nbors[20][20];
 int vertices, edges;
 
 void printLN(int m[][20], int vertices);
-void convert(int list_n[][20], int vertcs);
+void convert();
 
 int main()
 {
 	cin >> vertices >> edges;
-	convert(lists_nbors, vertices);
+	convert();
 	printLN(lists_nbors, vertices);
 }
 
-void convert(int ln[][20], int vertcs)
+void convert()
 {
 	int a, i, j;
-	for (i = 0; i < vertcs; i++)
+	for (i = 0; i < vertices; i++)
 	{
-		for (j = 0; j < vertcs; j++)
+		for (j = 0; j < vertices; j++)
 		{
 			cin >> a;
 			if ( a == 1)
 			{
-				ln[i+1][0]++; // i+1 because there is no vertex 0
-				ln[i+1][ln[i+1][0]] = j+1;
+				lists_nbors[i+1][0]++; // i+1 because there is no vertex 0
+				lists_nbors[i+1][lists_nbors[i+1][0]] = j+1;
 			}
 		}
 	}
