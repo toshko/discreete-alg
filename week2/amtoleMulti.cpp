@@ -40,7 +40,7 @@ void convert()
 	 cin >> a;
 	 if ( a == 1 && j >= i) // if the graph is oriented 'j >= i' condition has to be omited
 	 {
-	    cout << i << " " << j << endl; // Add +1 because there is no vertex 0
+	    cout << i << " " << j << endl; 
 	 }
       }
    }
@@ -50,16 +50,19 @@ void convert()
 //func that converts AM to list of edges and store it in an array
 void convert_to_array()
 {
-   int a, i, j, counter = 0;
+   int a, i, j, k, counter = 0;
    for ( i = 1; i <= vertices; i++ )
    {
       for ( j = 1; j <= vertices; j++)
       {
 	 cin >> a;
-	 if ( a == 1 && j >= i)  // if the graph is oriented 'j >= i' condition has to be omited
+	 if ( a != 0 && j >= i)  // if the graph is oriented 'j >= i' condition has to be omited
 	 {
-	    list_of_edges[counter][0] = i;
-	    list_of_edges[counter++][1] = j;
+	    for ( k = 0; k < a; k++ )
+	    {
+	       list_of_edges[counter][0] = i;
+	       list_of_edges[counter++][1] = j;
+	    }
 	 }
       }
    }

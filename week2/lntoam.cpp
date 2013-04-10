@@ -3,52 +3,50 @@
  * list of edges.
  */
 #include <iostream>
+#define MAXN 1000
 using namespace std;
 
 int vertices, edges;
-int matrix[15][15];
+int matrix[MAXN][MAXN];
 
-void convert(int am[15][15], int vertcs);
-void printAM(int am[15][15], int vertcs);
+void convert();
+void printAM();
 
 int main ()
 {
-	cin >> vertices >> edges;
-	convert(matrix, vertices);
-	printAM(matrix, vertices);
-	
+   cin >> vertices >> edges;
+   convert();
+   printAM();
+
 }
 
-void convert(int am[15][15], int vertcs)
+void convert()
 {
-	int a, i, j, counter, position = 0;
+   int a, i, j, counter;
 
-	for (i = 0; i < vertcs; i++)
-	{
-		do
-		{
-			cin >> counter;
-		} while ( counter == 0 );
+   for (i = 1; i <= vertices; i++)
+   {
+      cin >> counter;
 
-		for ( j = 0; j < counter; j++)
-		{	
-			cin >> a;
-			
-			am[i+1][a] = 1;
-		}
-	}
+      for ( j = 1; j <= counter; j++)
+      {	
+	 cin >> a;
+
+	 matrix[i][a]++;
+      }
+   }
 }
-void printAM(int am[15][15], int vertcs)
+void printAM()
 {
-	int i, j;
-	for (i = 1; i <= vertcs; i++) // loops starts from 1 because there is no vertex 0
-	{
-		for (j = 1; j <= vertcs; j++)
-		{
-			cout << am[i][j] << " "; 
-		}
-		cout << endl;
-	}
+   int i, j;
+   for (i = 1; i <= vertices; i++) // loops starts from 1 because there is no vertex 0
+   {
+      for (j = 1; j <= vertices; j++)
+      {
+	 cout << matrix[i][j] << " "; 
+      }
+      cout << endl;
+   }
 
 }
 

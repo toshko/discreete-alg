@@ -9,14 +9,14 @@ using namespace std;
 int vertices, edges;
 int matrix[MAXN][MAXN] = {0};
 
-void printLN(int matrix[MAXN][MAXN], int vertices);
+void printLN();
 void convert();
 
 int main ()
 {
 	cin >> vertices >> edges;
 	convert();
-	printLN(matrix, vertices);
+	printLN();
 	return 0;
 }
 
@@ -36,12 +36,12 @@ void convert()
 }
 
 //func that prints the LN
-void printLN(int matrix[][MAXN], int vertcs)
+void printLN()
 {
 	int i, j;
-	for (i = 1; i <= vertcs; i++) // loop starts from 1 because there is no vertex 0
+	for (i = 1; i <= vertices; i++) // loop starts from 1 because there is no vertex 0
 	{
-		for (j = 0; j <= vertcs; j++) // loop starts from 0 because in the zero element of every row is a counter of the neighbours
+		for (j = 0; j <= matrix[i][0]; j++) // loop starts from 0 because in the zero element of every row is a counter of the neighbours
 		{
 			cout << matrix[i][j] << " "; 
 		}

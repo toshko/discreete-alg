@@ -27,7 +27,7 @@ void convert()
 		for (j = 1; j <= vertices; j++)
 		{
 			cin >> a;
-			if ( a == 1)
+			if ( a != 0)
 			{
 				lists_nbors[i][0]++; 
 				lists_nbors[i][lists_nbors[i][0]] = j;
