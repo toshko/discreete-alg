@@ -56,7 +56,6 @@ void BFS(int r)
       for ( i = 1; i <= m[x][0]; ++i)
       {
 	 y = m[x][i];
-	 cout << "Y: " << y << endl;
 	 if (!U[y])
 	 {
 	    push(y);
