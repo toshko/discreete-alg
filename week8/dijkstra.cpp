@@ -1,6 +1,4 @@
-/* Program that take a graph represented as
- * a list of edges and convert it to 
- * adjacency matrix(AM).
+/* Program that implements Dijkstra algorithm
  */
 #include <iostream>
 #include <climits>
