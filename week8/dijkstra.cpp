@@ -37,11 +37,11 @@ void dijkstra(int r)
    {
       for (j = 1; j <= vertices; ++j)
       {
-	 if(matrix[r][j] == 1 && U[j] == 0)
+	 if(matrix[r][j] != 0 && U[j] == 0)
 	 {
-	    if((C[r][j] + D[r]) < D[j])
+	    if((matrix[r][j] + D[r]) < D[j])
 	    {
-	       D[j] = C[r][j] + D[r];
+	       D[j] = matrix[r][j] + D[r];
 	       P[j] = r;
 	    }
 	 }
@@ -60,23 +60,13 @@ void dijkstra(int r)
 //func that converts list of edges to AM
 void convert()
 {
-   int a, b, i, c, j;
-   /*  for (i = 1; i <= vertices; i++) // loops starts from 1 because there is no vertex 0
-       {
-       for (j = 1; j <= vertices; j++)
-       {
-       C[i][j] = INT_MAX; 
-       }
-       }
-       */
+   int a, b, i, c;
    for ( i = 0; i < edges; i++ )
    {
       D[i+1] = INT_MAX;
       cin >> a >> b >> c;
-      matrix[a][b] = 1;
-      matrix[b][a] = 1; // if the graph is directed comment this line
-      C[a][b] = c;
-      C[b][a] = c;
+      matrix[a][b] = c;
+      matrix[b][a] = c; // if the graph is directed comment this line
    }
 
 }
@@ -85,15 +75,6 @@ void convert()
 void printAM()
 {
    int i, j;
-   for (i = 1; i <= vertices; i++) // loops starts from 1 because there is no vertex 0
-   {
-      for (j = 1; j <= vertices; j++)
-      {
-	 cout << C[i][j] << " "; 
-      }
-      cout << endl;
-   }
-   cout << endl;
    for (i = 1; i <= vertices; i++) // loops starts from 1 because there is no vertex 0
    {
       for (j = 1; j <= vertices; j++)
