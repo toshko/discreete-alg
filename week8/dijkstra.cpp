@@ -17,7 +17,7 @@ int main ()
    cin >> vertices >> edges;
    convert();
    //printAM();
-   dijkstra(1);
+   dijkstra(3);
    for (int v = 1; v <= vertices; v++)
       cout << D[v] << " ";
    cout << endl;
@@ -44,11 +44,12 @@ void dijkstra(int r)
 	    }
 	 }
       }
-      r = INT_MAX;
-      for (z = 1; z < vertices; z++)
+      int min = INT_MAX;
+      for (z = 1; z <= vertices; z++)
       {
-	 if(D[z] < r && U[z] == 0)
+	 if(D[z] < min && U[z] == 0)
 	 {
+	    min = D[z];
 	    r = z;
 	 }
       }
