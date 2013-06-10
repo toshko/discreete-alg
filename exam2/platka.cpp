@@ -4,7 +4,10 @@
 #define MAXN 10000
 using namespace std;
 
-int S[MAXN],matrix[MAXN][MAXN], vertices, edges, top, start, counter = 0;
+int S[MAXN],matrix[MAXN][MAXN],PATH[MAXN], vertices, edges, top, start, counter1 = 0;
+int path = 0;
+int edgecounter = 0;
+int counter2 = 0;
 void make_empty();
 void push(int x);
 void pop();
@@ -13,23 +16,42 @@ void eulerCircuit(int r);
 int look();
 bool not_empty();
 bool eulerCheck();
+bool checks = true;
 int main()
 {
    cin >> vertices >> edges;
    convert();
-   if ( eulerCheck() && counter == 2)
+   checks = eulerCheck();
+   
+   if ( checks && counter1 == 2)
    {
       eulerCircuit(start);
+     
    }
-   else if ( eulerCheck() )
+   else if ( checks )
    {
       eulerCircuit(1);
    }
    else
    {
-      cout << "Sorry, Pesho";
+      cout << "Sorry, Pesho" << endl;
+      return 0;
    }
    cout << endl;
+   if ( edgecounter == edges )
+   {
+      int i = 0;
+      while ( PATH[i] != 0)
+      {
+	 cout << PATH[i] << " ";
+	 i++;
+      }
+      cout << endl;
+   }
+   else
+   {
+      cout << "Sorry, Pesho" << endl;
+   }
 
 
 }
@@ -53,6 +75,7 @@ void eulerCircuit(int r)
 	    }
 	 }
 	 push(v);
+	 edgecounter++;
       }
       else pop();
    }
@@ -71,8 +94,9 @@ void convert()
 
 bool eulerCheck()
 {
+   int counter = 0;
    bool check = true;
-   for (int i = 0; i < vertices; ++i)
+   for (int i = 1; i <= vertices; ++i)
    {
       if(matrix[i][0] % 2 != 0)
       {
@@ -86,7 +110,8 @@ bool eulerCheck()
    {
       check = false;
    }
-
+counter1 = counter;
+   
    return check;
 
 }
@@ -100,7 +125,8 @@ void push(int x)
 }
 void pop()
 {
-   cout << S[top--] << " ";
+   //cout << S[top--] << " ";
+   PATH[counter2++] = S[top--];
 }
 int look()
 {
