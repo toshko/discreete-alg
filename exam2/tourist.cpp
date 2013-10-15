@@ -22,7 +22,6 @@ int main ()
    convert();
    //printAM();
    dijkstra(start);
-   cout << endl;
    PATH[g] = end;  
    while ( P[h] != -1)
    {
@@ -50,7 +49,7 @@ void dijkstra(int r)
    {
       for (j = 1; j <= vertices; ++j)
       {
-	 if(matrix[r][j] != 0 && U[j] == 0)
+	 if(matrix[r][j] != -1 && U[j] == 0)
 	 {
 	    if((matrix[r][j] + D[r]) < D[j])
 	    {
@@ -75,6 +74,14 @@ void dijkstra(int r)
 void convert()
 {
    int a, b, i, c, d;
+   for (i = 1; i <= vertices; ++i)
+   {
+      for ( d = 1; d <= vertices; ++d)
+      {
+	 matrix[i][d] = -1;
+      }
+   }
+
    for ( i = 1; i <= vertices; ++i)
    {
       cin >> c;
@@ -84,7 +91,7 @@ void convert()
    {
       D[i+1] = INT_MAX;
       cin >> a >> b;
-      d = abs( a - b);
+      d = abs(V[a] - V[b]);
       matrix[a][b] = d;
       matrix[b][a] = d; // if the graph is directed comment this line
    }
